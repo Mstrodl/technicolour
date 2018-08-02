@@ -1,0 +1,285 @@
+.term-line:last-child::after {
+    width: 0.75em;
+    position: absolute;
+    height: 22px;
+    background-color: #0f0;
+    display: inline-block;
+    content: "";
+    animation: blink 1s infinite;
+}
+
+.term-line {
+    color: #22d622;
+    white-space: pre;
+    font-size: 22px;
+    position: relative;
+    text-transform: uppercase;
+    height: 22px;
+}
+
+.page-contents {
+    height: 100%;
+    min-height: 100vh;
+    background-color: #1d1b1b;
+    background-color: #367b36;
+}
+
+#term {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+#term::-webkit-scrollbar {
+    display: none;
+}
+
+body, html {
+    margin: 0;
+    font-family: apple, monospace;
+}
+
+html:after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: blackToOn 0.2s ease-out;
+    content: "";
+}
+
+html:before {
+    z-index: 9999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    content: " ";
+    overflow: hidden;
+    animation: blipOnWiden 0.2s ease-out, blipOnFlash 0.2s linear;
+    background-color: #fff;
+    height: 0;
+    width: 0;
+    background: none;
+}
+
+@keyframes blipOnFlash {
+    0% {
+	background: #fff;
+	height: 2px;
+	width: 100vw;
+    }
+    100% {
+	background: #fff;
+	height: 100vh;
+	width: 100vw;
+	backgroud-color: rgba(255,255,255,0.5);
+    }
+}
+
+@keyframes blipOnWiden {
+    0% {
+	background: #fff;
+	height: 2px;
+	width: 0;
+    }
+    100% {
+	background: #fff;
+	height: 2px;
+	width: 100vw;
+    }
+}
+
+@keyframes blackToOn {
+    0% {
+	background-color: #000;
+    }
+    100% {
+	background-color: rgba(0,0,0,0);
+    }
+}
+
+@keyframes blink {
+    0% {
+	background-color: #22d622;
+    }
+    100% {
+	background: none;
+    }
+}
+
+.sl {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    overflow-y: hidden;
+    background: -webkit-repeating-linear-gradient(top, transparent 0px, transparent 1px, rgba(0, 0, 0, 0.25) 1px, rgba(0, 0, 0, 0.25) 2px);
+    background-size: 100% 2px;
+}
+
+.vl {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    overflow-y: hidden;
+    background: -webkit-repeating-linear-gradient(right, transparent 0px, transparent 1px, rgba(0, 0, 0, 0.25) 1px, rgba(0, 0, 0, 0.25) 2px);
+    background-size: 2px 100%;
+}
+
+.sl:after {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    animation: flicker 0.15s infinite;
+    content: " ";
+    display: block;
+}
+
+.sl-b {
+    height: 8vh;
+    width: 100%;
+    background-color: rgba(150, 150, 150, .1);
+    animation: scroll 15s infinite;
+    position: absolute;
+    transform: rotate(1deg);
+}
+
+@keyframes scroll {
+    0% {
+	top: -10%;
+    }
+
+    100% {
+	top: 110%;
+    }
+}
+
+@font-face {
+    font-family: apple;
+    src: url("apple.ttf");
+}
+
+@keyframes flicker {
+  0% {
+  opacity: 0.27861;
+  }
+  5% {
+  opacity: 0.34769;
+  }
+  10% {
+  opacity: 0.23604;
+  }
+  15% {
+  opacity: 0.90626;
+  }
+  20% {
+  opacity: 0.18128;
+  }
+  25% {
+  opacity: 0.83891;
+  }
+  30% {
+  opacity: 0.65583;
+  }
+  35% {
+  opacity: 0.67807;
+  }
+  40% {
+  opacity: 0.26559;
+  }
+  45% {
+  opacity: 0.84693;
+  }
+  50% {
+  opacity: 0.96019;
+  }
+  55% {
+  opacity: 0.08594;
+  }
+  60% {
+  opacity: 0.20313;
+  }
+  65% {
+  opacity: 0.71988;
+  }
+  70% {
+  opacity: 0.53455;
+  }
+  75% {
+  opacity: 0.37288;
+  }
+  80% {
+  opacity: 0.71428;
+  }
+  85% {
+  opacity: 0.70419;
+  }
+  90% {
+  opacity: 0.7003;
+  }
+  95% {
+  opacity: 0.36108;
+  }
+  100% {
+  opacity: 0.24387;
+  }
+}
+
+#loadamount {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #f00;
+    font-size: 5vh;
+    display: none;
+    width: 10%;
+    height: 10%;
+}
+
+.disconnected-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 10%;
+    height: 10%;
+}
+
+.disconnected-indicator.disconnected-visible {
+    display: block;
+}
+
+.disconnected {
+    animation: flash 1s infinite;
+}
+
+path {
+    fill: #f00 !important;
+}
+
+@keyframes flash {
+    0% {
+	opacity: 1;
+    }
+
+    50% {
+	opacity: 0;
+    }
+
+    100% {
+	opacity: 1;
+    }
+}
+
+.1508174b0a110200140957061f {
+    content: "Good luck friends";
+}
